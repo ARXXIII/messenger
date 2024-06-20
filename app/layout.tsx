@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Nunito } from "next/font/google";
+import { Nunito } from "next/font/google";
+import ToasterContext from "./context/ToasterContext";
 import "./globals.css";
 
 const nunito = Nunito({ subsets: ["latin"] });
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={nunito.className}>{children}</body>
+      <body className={nunito.className}>
+        <ToasterContext />
+        {children}
+      </body>
     </html>
   );
 }
