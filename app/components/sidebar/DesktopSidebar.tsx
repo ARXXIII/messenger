@@ -1,12 +1,13 @@
 'use client'
 
+import { DesktopSidebarProps } from "@/app/types"
 import Avatar from "../Avatar"
 import DesktopItem from "./DesktopItem"
 import useRoutes from "@/app/hooks/useRoutes"
 
 import { useState } from "react"
 
-const DesktopSidebar = () => {
+const DesktopSidebar = ({ currentUser }: DesktopSidebarProps) => {
     const routes = useRoutes()
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -28,7 +29,7 @@ const DesktopSidebar = () => {
             </nav>
             <nav className="flex flex-col justify-between items-center">
                 <div onClick={() => setIsOpen(true)} className="hover:opacity-75 cursor-pointer transition">
-                    <Avatar />
+                    <Avatar user={currentUser} />
                 </div>
             </nav>
         </div>

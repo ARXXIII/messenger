@@ -7,12 +7,12 @@ async function Sidebar({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    // const currentUser = await getCurrentUser()
+    const currentUser = await getCurrentUser()
 
     return (
         <div className="relative h-full">
             <DesktopSidebar
-            // currentUser={currentUser!} 
+                currentUser={currentUser!}
             />
             <MobileFooter />
             <main className="lg:pl-20 h-full">
