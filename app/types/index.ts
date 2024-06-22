@@ -1,3 +1,4 @@
+import { User } from '@prisma/client';
 import { IconType } from 'react-icons';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
@@ -24,4 +25,31 @@ export interface ButtonProps {
 export interface AuthSocialButtonProps {
 	icon: IconType;
 	onClick?: () => void;
+}
+
+export interface AuthContextProps {
+	children: React.ReactNode;
+}
+
+export interface DesktopItemProps {
+	href: string;
+	label: string;
+	icon: any;
+	active?: boolean;
+	onClick?: () => void;
+}
+
+export interface MobileItemProps {
+	href: string;
+	icon: any;
+	active?: boolean;
+	onClick?: () => void;
+}
+
+export interface DesktopSidebarProps {
+	currentUser: User;
+}
+
+export interface AvatarProps {
+	user?: User;
 }
