@@ -3,7 +3,7 @@ CREATE TABLE "User" (
     "_id" TEXT NOT NULL,
     "name" TEXT,
     "email" TEXT,
-    "emailVarified" TIMESTAMP(3),
+    "emailVerified" TIMESTAMP(3),
     "image" TEXT,
     "hashedPassword" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
