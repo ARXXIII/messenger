@@ -6,7 +6,7 @@ const AuthSocialButton = ({ icon: Icon, onClick }: AuthSocialButtonProps) => {
         <button
             type="button"
             onClick={onClick}
-            className="flex justify-center p-3 w-full text-gray-500 bg-white hover:bg-gray-50 rounded-xl shadow"
+            className="flex justify-center p-3 w-full text-gray-400 bg-zinc-800 hover:bg-gray-50 rounded-xl"
         >
             <Icon />
         </button>
