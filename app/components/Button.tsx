@@ -1,6 +1,6 @@
 'use client'
 
-import clsx from "clsx"
+import { cn } from "@/lib/utils"
 import { ButtonProps } from "../types"
 
 const Button = ({
@@ -17,12 +17,12 @@ const Button = ({
             type={type}
             disabled={disabled}
             onClick={onClick}
-            className={clsx('flex justify-center items-center p-3 font-bold text-sm rounded-xl',
+            className={cn('flex justify-center items-center p-3 font-bold text-sm rounded-xl',
                 disabled && 'opacity-50 cursor-default',
                 fullWidth && 'w-full',
                 secondary ? 'text-gray-900' : 'text-white',
                 danger && 'bg-red-500 hover:bg-rose-600',
-                !secondary && !danger && 'bg-sky-500 hover:bg-sky-600'
+                !secondary && !danger && 'bg-purple-700 hover:bg-purple-800'
             )}
         >
             {children}
