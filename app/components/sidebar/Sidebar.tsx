@@ -10,12 +10,12 @@ async function Sidebar({
     const currentUser = await getCurrentUser()
 
     return (
-        <div className="relative h-full">
+        <div className="lg:relative lg:flex lg:justify-between lg:gap-x-12 h-full">
             <DesktopSidebar
                 currentUser={currentUser!}
             />
             <MobileFooter />
-            <main className="lg:pl-20 h-full">
+            <main className="w-full h-full">
                 {children}
             </main>
         </div>
