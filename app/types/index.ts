@@ -1,5 +1,5 @@
-import { User } from '@prisma/client';
 import { IconType } from 'react-icons';
+import { Conversation, Message, User } from '@prisma/client';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
 export interface InputProps {
@@ -52,4 +52,26 @@ export interface DesktopSidebarProps {
 
 export interface AvatarProps {
 	user?: User;
+}
+
+export interface UserListProps {
+	users: User[];
+}
+
+export interface UserBoxProps {
+	data: User;
+}
+
+export type FullMessageType = Message & {
+	sender: User;
+	seenBy: User[];
+};
+
+export type FullConversationType = Conversation & {
+	users: User[];
+	messages: FullMessageType[];
+};
+
+export interface ConversationListProps {
+	initialsItems: FullConversationType;
 }
