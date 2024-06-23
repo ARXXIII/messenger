@@ -13,7 +13,7 @@ const Avatar = ({ user }: AvatarProps) => {
                     fill
                 />
             </div>
-            <span className="absolute block top-0 right-0 w-3 h-3 bg-green-500 ring-2 ring-white rounded-full" />
+            <span className="absolute block top-0 right-0 w-3 h-3 bg-green-500 ring-2 ring-zinc-900 rounded-full" />
         </div>
     )
 }
