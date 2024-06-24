@@ -14,7 +14,7 @@ const MobileItem = ({ href, icon: Icon, active, onClick }: MobileItemProps) => {
         <Link
             href={href}
             onClick={onClick}
-            className={cn(`flex justify-center gap-x-3 p-3 w-full font-semibold text-neutral-300 rounded-xl`,
+            className={cn(`flex justify-center gap-x-3 p-3 w-full font-semibold text-neutral-300 rounded-lg`,
                 active && 'text-purple-700 bg-zinc-800'
             )}
         >
