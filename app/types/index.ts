@@ -68,10 +68,47 @@ export type FullMessageType = Message & {
 };
 
 export type FullConversationType = Conversation & {
-	users: User[];
+	users: {
+		user: User;
+	}[];
 	messages: FullMessageType[];
 };
 
 export interface ConversationListProps {
-	initialsItems: FullConversationType;
+	initialsItems: FullConversationType[];
+}
+
+export interface ConversationBoxProps {
+	data: FullConversationType;
+	selected?: boolean;
+}
+
+export interface ConversationIdProps {
+	params: any;
+}
+
+export interface HeaderProps {
+	conversation: Conversation & {
+		users: {
+			user: User;
+		}[];
+	};
+}
+
+export interface MessageInputProps {
+	id: string;
+	type?: string;
+	register: UseFormRegister<FieldValues>;
+	required?: boolean;
+	placeholder?: string;
+	errors: FieldErrors;
+}
+
+export interface BodyProps {
+	initialMessages: FullMessageType[];
+}
+
+export interface MessageBoxProps {
+	data: FullMessageType;
+	isLast?: boolean;
 }
