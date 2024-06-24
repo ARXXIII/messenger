@@ -27,12 +27,12 @@ const UserBox = ({ data }: UserBoxProps) => {
     }, [data, router])
 
     return (
-        <div onClick={handleClick} className="relative flex items-center p-3 gap-x-3 w-full bg-zinc-900 rounded-xl transition cursor-pointer">
+        <div onClick={handleClick} className="relative flex items-center p-3 gap-x-3 w-full bg-zinc-900 hover:bg-zinc-950/60 rounded-xl transition cursor-pointer">
             <Avatar user={data} />
             <div className="flex-1 min-w-0">
                 <div className="focus:outline-none">
-                    <div className="flex justify-between items-center">
-                        <p className="font-medium text-sm text-neutral-100">
+                    <div>
+                        <p className="font-medium text-md text-neutral-100">
                             {data.name}
                         </p>
                     </div>
