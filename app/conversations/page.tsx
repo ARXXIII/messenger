@@ -8,7 +8,7 @@ const Home = () => {
     const { isOpen } = useConversation()
 
     return (
-        <div className={cn('lg:block h-full',
+        <div className={cn('lg:block w-full h-full',
             isOpen ? 'block' : 'hidden'
         )}>
             <Empty />
