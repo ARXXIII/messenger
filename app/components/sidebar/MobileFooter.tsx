@@ -11,7 +11,7 @@ const MobileFooter = () => {
     if (isOpen) return null
 
     return (
-        <div className="absolute flex lg:hidden justify-between items-center p-1 bottom-0 w-full bg-zinc-900 z-40 rounded-xl">
+        <div className="absolute grid grid-cols-3 lg:hidden justify-between items-center w-full p-1 bottom-0 bg-zinc-900 z-40 rounded-xl">
             {routes.map((item) => (
                 <MobileItem
                     key={item.label}
