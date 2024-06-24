@@ -17,10 +17,10 @@ const useRoutes = () => {
 	const routes = useMemo(
 		() => [
 			{
-				href: '/conversation',
+				href: '/conversations',
 				label: 'All chats',
 				icon: HiChatBubbleLeftRight,
-				active: pathname === '/conversation' || !!conversationId,
+				active: pathname === '/conversations' || !!conversationId,
 			},
 			{
 				href: '/users',
