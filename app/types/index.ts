@@ -64,14 +64,13 @@ export interface UserBoxProps {
 
 export type FullMessageType = Message & {
 	sender: User;
-	seenBy: User[];
+	seen: boolean;
 };
 
 export type FullConversationType = Conversation & {
 	users: {
 		user: User;
 	}[];
-	messages: FullMessageType[];
 };
 
 export interface ConversationListProps {
