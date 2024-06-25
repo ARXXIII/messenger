@@ -50,14 +50,7 @@ export async function POST(request: Request) {
 			where: {
 				users: {
 					some: {
-						userId: currentUser.id,
-					},
-				},
-				AND: {
-					users: {
-						some: {
-							userId,
-						},
+						userIds: currentUser.id,
 					},
 				},
 			},
