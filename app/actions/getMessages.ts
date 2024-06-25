@@ -1,5 +1,4 @@
 import prisma from '@/app/libs/prismadb';
-import { FullMessageType } from '../types';
 
 const getMessages = async (conversationId: string) => {
 	try {
@@ -9,23 +8,13 @@ const getMessages = async (conversationId: string) => {
 			},
 			include: {
 				sender: true,
-				seenBy: {
-					include: {
-						user: true,
-					},
-				},
 			},
 			orderBy: {
 				createdAt: 'asc',
 			},
 		});
 
-		const transformedMessages = messages.map((message) => ({
-			...message,
-			seenBy: message.seenBy.map((seen) => seen.user),
-		}));
-
-		return transformedMessages as FullMessageType[];
+		return messages;
 	} catch (error) {
 		return [];
 	}
