@@ -20,7 +20,7 @@ const Header = ({ conversation }: HeaderProps) => {
     }, [conversation])
 
     return (
-        <header className="flex justify-between items-center p-3 w-full bg-zinc-900 rounded-xl">
+        <header className="flex justify-between items-center px-2 py-1 lg:p-3 w-full bg-zinc-900 rounded-xl">
             <div className="flex items-center gap-3">
                 <Link
                     href='/conversations'
