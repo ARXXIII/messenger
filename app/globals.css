@@ -75,6 +75,17 @@
 	}
 }
 
+::-webkit-scrollbar {
+	width: 0.4em;
+	border-radius: 12px;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 12px;
+	background-color: #18181b;
+}
+
 input,
 textarea,
 button {
