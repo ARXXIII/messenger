@@ -11,11 +11,6 @@ const MessageBox = ({ data, isLast }: MessageBoxProps) => {
 
     const isOwn = session?.data?.user?.email === data?.sender?.email
 
-    const seenList = (data.seenBy || [])
-        .filter((user) => user.email !== data?.sender?.email)
-        .map((user) => user.name)
-        .join(', ')
-
     return (
         <div
             className={cn('flex gap-3 p-3',
@@ -43,13 +38,6 @@ const MessageBox = ({ data, isLast }: MessageBoxProps) => {
                     {data.body}
                 </div>
             </div>
-
-            {isLast && isOwn && seenList.length > 0 && (
-                <div className="font-light text-sx text-gray-500">
-                    {`Seen by ${seenList}`}
-                </div>
-            )}
-
         </div>
     )
 }
