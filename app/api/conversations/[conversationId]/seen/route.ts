@@ -18,11 +18,6 @@ export async function POST(request: Request, { params }: { params: any }) {
 				id: conversationId,
 			},
 			include: {
-				messages: {
-					include: {
-						seenBy: true,
-					},
-				},
 				users: true,
 			},
 		});
@@ -31,7 +26,17 @@ export async function POST(request: Request, { params }: { params: any }) {
 			return new NextResponse('Invalid ID', { status: 400 });
 		}
 
-		const lastMessage = conversation.messages[conversation.messages.length - 1];
+		const lastMessage = await prisma.message.findFirst({
+			where: {
+				conversationId: conversationId,
+				NOT: {
+					senderId: currentUser.id,
+				},
+			},
+			orderBy: {
+				createdAt: 'desc',
+			},
+		});
 
 		if (!lastMessage) {
 			return NextResponse.json(conversation);
@@ -43,14 +48,9 @@ export async function POST(request: Request, { params }: { params: any }) {
 			},
 			include: {
 				sender: true,
-				seenBy: true,
 			},
 			data: {
-				seenBy: {
-					connect: {
-						id: currentUser.id,
-					},
-				},
+				seen: true,
 			},
 		});
 
