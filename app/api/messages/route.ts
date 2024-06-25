@@ -18,11 +18,7 @@ export async function POST(request: Request) {
 			data: {
 				body: message,
 				image: image,
-				conversation: {
-					connect: {
-						id: conversationId,
-					},
-				},
+				conversationId: conversationId,
 				sender: {
 					connect: {
 						id: currentUser.id,
@@ -40,20 +36,9 @@ export async function POST(request: Request) {
 			},
 			data: {
 				lastMessageAt: new Date(),
-				messages: {
-					connect: {
-						id: newMessage.id,
-					},
-				},
 			},
 			include: {
 				users: true,
-				messages: {
-					include: {
-						sender: true,
-						seenBy: true,
-					},
-				},
 			},
 		});
 
