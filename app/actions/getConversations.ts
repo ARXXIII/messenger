@@ -1,6 +1,5 @@
 import prisma from '@/app/libs/prismadb';
 import getCurrentUser from './getCurrentUser';
-import { FullConversationType } from '../types';
 
 const getConversations = async () => {
 	const currentUser = await getCurrentUser();
@@ -17,7 +16,7 @@ const getConversations = async () => {
 			where: {
 				users: {
 					some: {
-						userId: currentUser.id,
+						userIds: currentUser.id,
 					},
 				},
 			},
@@ -27,20 +26,10 @@ const getConversations = async () => {
 						user: true,
 					},
 				},
-				messages: {
-					include: {
-						sender: true,
-						seenBy: {
-							include: {
-								user: true,
-							},
-						},
-					},
-				},
 			},
 		});
 
-		return conversations as FullConversationType[];
+		return conversations;
 	} catch (error) {
 		return [];
 	}
