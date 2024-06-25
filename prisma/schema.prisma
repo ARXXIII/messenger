@@ -26,8 +26,7 @@ model User {
 
   accounts      Account[]
   messages      Message[]
-  seenMessages  SeenMessage[]
-  conversations ConversationUser[]
+  conversations ConversationUsers[]
 }
 
 model Account {
@@ -56,47 +55,29 @@ model Conversation {
   name          String?
   isGroup       Boolean?
 
-  messagesIds String[]
-  messages    Message[]
-
-  userIds String[]
-  users   ConversationUser[]
+  users ConversationUsers[]
 }
 
-model ConversationUser {
-  id             String @id @default(cuid()) @map("_id")
+model ConversationUsers {
   conversationId String
-  userId         String
+  userIds        String
 
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userIds], references: [id], onDelete: Cascade)
 
-  @@unique([conversationId, userId])
+  @@unique([conversationId, userIds])
 }
 
 model Message {
-  id        String   @id @default(cuid()) @map("_id")
-  body      String?
-  image     String?
-  createdAt DateTime @default(now())
+  id     String    @id @default(cuid()) @map("_id")
+  body   String?
+  image  String?
+  sentAt DateTime  @default(now())
+  seen   Boolean   @default(false)
+  seenAt DateTime?
 
   conversationId String
-  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
 
   senderId String
   sender   User   @relation(fields: [senderId], references: [id], onDelete: Cascade)
-
-  seenBy SeenMessage[]
-}
-
-model SeenMessage {
-  id        String   @id @default(cuid()) @map("_id")
-  userId    String
-  messageId String
-  seenAt    DateTime @default(now())
-
-  user    User    @relation(fields: [userId], references: [id])
-  message Message @relation(fields: [messageId], references: [id])
-
-  @@unique([userId, messageId])
 }
