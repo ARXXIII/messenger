@@ -20,6 +20,7 @@ const Body = ({ initialMessages }: BodyProps) => {
 
     return (
         <div className="flex-1 overflow-y-auto">
+
             {messages.map((message, index) => (
                 <MessageBox
                     key={message.id}
@@ -27,7 +28,8 @@ const Body = ({ initialMessages }: BodyProps) => {
                     isLast={index === messages.length - 1}
                 />
             ))}
-            < div ref={bottomRef} className="pt-24" />
+
+            <div ref={bottomRef} className="pt-24" />
         </div >
     )
 }
