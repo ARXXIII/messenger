@@ -34,7 +34,7 @@ const Form = () => {
     }
 
     return (
-        <div className="flex items-center gap-3 p-3 w-full bg-zinc-900 rounded-xl">
+        <div className="flex items-center gap-x-3 px-2 py-1 lg:p-3 w-full bg-zinc-900 rounded-xl">
             <PiPaperclip size={30} className="text-gray-500" />
             <form onSubmit={handleSubmit(onSubmit)} className="flex items-center gap-3 w-full">
                 <MessageInput
