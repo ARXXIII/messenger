@@ -35,7 +35,7 @@ export async function POST(request: Request, { params }: { params: any }) {
 				},
 			},
 			orderBy: {
-				createdAt: 'desc',
+				seenAt: 'desc',
 			},
 		});
 
