@@ -13,11 +13,13 @@ const UserList = ({ users }: UserListProps) => {
                         People
                     </div>
                 </div>
+                <div className="grid grid-cols-1 gap-y-3">
 
-                {users.map((user) => (
-                    <UserBox key={user.id} data={user} />
-                ))}
+                    {users.map((user) => (
+                        <UserBox key={user.id} data={user} />
+                    ))}
 
+                </div>
             </div>
         </aside>
     )
