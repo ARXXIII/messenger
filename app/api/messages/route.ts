@@ -2,6 +2,7 @@ import prisma from '@/app/libs/prismadb';
 import getCurrentUser from '@/app/actions/getCurrentUser';
 
 import { NextResponse } from 'next/server';
+import { pusherServer } from '@/app/libs/pusher';
 
 export async function POST(request: Request) {
 	try {
@@ -41,6 +42,8 @@ export async function POST(request: Request) {
 				users: true,
 			},
 		});
+
+		await pusherServer.trigger(conversationId, 'messages:new', newMessage);
 
 		return NextResponse.json(newMessage);
 	} catch (error) {
