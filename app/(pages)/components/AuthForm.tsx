@@ -25,12 +25,6 @@ const AuthForm = () => {
     const [confetti, setConfetti] = useState<boolean>(false)
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
-    useEffect(() => {
-        if (session?.status === 'authenticated') {
-            router.push('/users')
-        }
-    }, [session?.status, router])
-
     const toggleVariant = useCallback(() => {
 
         if (variant === 'LOGIN') {
@@ -100,6 +94,12 @@ const AuthForm = () => {
             .finally(() => setIsLoading(false))
     }
 
+    useEffect(() => {
+        if (session?.status === 'authenticated') {
+            router.push('/users')
+        }
+    }, [session?.status, router])
+
     return (
         <>
             {confetti ? (
@@ -112,7 +112,7 @@ const AuthForm = () => {
                 />
             ) : null}
 
-            <div className="mt-6 lg:mx-auto w-full lg:max-w-md">
+            <div className="lg:mx-auto w-full lg:max-w-md">
                 <div className="p-6 bg-zinc-900 rounded-xl shadow">
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 
@@ -168,11 +168,11 @@ const AuthForm = () => {
                             <AuthSocialButton icon={BsGoogle} onClick={() => socialAction('google')} />
                         </div>
                     </section>
-                    <section className="flex justify-center gap-3 mt-6 text-sm text-gray-400">
+                    <section className="flex justify-center gap-3 mt-6 text-sm text-gray-500">
                         <div>
                             {variant === 'LOGIN' ? 'New to Messenger?' : 'Already have an account?'}
                         </div>
-                        <div onClick={toggleVariant} className="underline cursor-pointer">
+                        <div onClick={toggleVariant} className="underline cursor-pointer hover:text-gray-400 transition">
                             {variant === 'LOGIN' ? 'Create an account' : 'Login'}
                         </div>
                     </section>
