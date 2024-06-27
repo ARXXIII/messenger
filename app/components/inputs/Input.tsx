@@ -14,7 +14,7 @@ const Input = ({
 }: InputProps) => {
     return (
         <div>
-            <label htmlFor={id} className="block font-medium text-sm text-white">{label}</label>
+            <label htmlFor={id} className="block font-medium text-sm text-neutral-300">{label}</label>
             <div className="mt-3">
                 <input
                     id={id}
@@ -22,7 +22,7 @@ const Input = ({
                     autoComplete={id}
                     disabled={disabled}
                     {...register(id, { required })}
-                    className={cn(`p-3 w-full lg:min-w-[300px] text-white border-2 border-zinc-800 focus:border-purple-500 bg-transparent rounded-xl duration-200 ease-in`,
+                    className={cn(`p-3 w-full lg:min-w-[300px] text-neutral-300 border-2 border-zinc-800 focus:border-purple-700 bg-transparent rounded-xl duration-200 ease-in`,
                         errors[id] && 'border-rose-500',
                         disabled && 'opacity-50 cursor-default'
                     )}
