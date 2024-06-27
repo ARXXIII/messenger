@@ -51,9 +51,9 @@ const ConversationBox = ({ data, selected }: ConversationBoxProps) => {
                             {data.name || otherUser.user.name}
                         </p>
 
-                        {lastMessage?.createdAt && (
+                        {lastMessage?.seenAt && (
                             <p className='text-xs text-gray-500'>
-                                {format(new Date(lastMessage.createdAt), 'p')}
+                                {format(new Date(lastMessage.sentAt), 'p')}
                             </p>
                         )}
 
