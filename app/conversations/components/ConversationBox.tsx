@@ -4,11 +4,11 @@ import useOtherUser from '@/app/hooks/useOtherUser'
 
 import { cn } from '@/lib/utils'
 import { format } from 'date-fns'
-import { Avatar } from '@/app/components'
-import { useRouter } from "next/navigation"
+import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useCallback, useMemo } from 'react'
 import { ConversationBoxProps } from '@/app/types'
+import { Avatar, AvatarGroup } from '@/app/components'
 
 const ConversationBox = ({ data, selected }: ConversationBoxProps) => {
     const router = useRouter()
@@ -25,20 +25,6 @@ const ConversationBox = ({ data, selected }: ConversationBoxProps) => {
         return messages[messages.length - 1]
     }, [data.messages])
 
-    const userEmail = useMemo(() => {
-        return session?.data?.user?.email
-    }, [session?.data?.user?.email])
-
-    const hasSeen = useMemo(() => {
-        if (!lastMessage) return false
-
-        const seenArr = lastMessage.seenBy || []
-
-        if (!userEmail) return false
-
-        return seenArr.filter((user) => user.email === userEmail).length !== 0
-    }, [userEmail, lastMessage])
-
     const lastMessageText = useMemo(() => {
         if (lastMessage?.image) return 'Sent an image'
 
@@ -49,14 +35,20 @@ const ConversationBox = ({ data, selected }: ConversationBoxProps) => {
 
     return (
         <div onClick={handleClick} className={cn('relative flex items-center p-3 gap-x-3 w-full hover:bg-zinc-950/60 rounded-xl transition cursor-pointer',
-            selected ? 'bg-purple-700' : 'bg-zinc-900'
+            selected ? 'bg-purple-700 hover:bg-purple-600' : 'bg-zinc-900'
         )}>
-            <Avatar user={otherUser[0]} />
+
+            {data.isGroup ? (
+                <AvatarGroup users={data.users} />
+            ) : (
+                <Avatar user={otherUser.user} />
+            )}
+
             <div className='flex-1 min-w-0'>
                 <div className='focus:outline-none'>
                     <div className='flex justify-between items-center'>
                         <p className='font-medium text-md text-neutral-100 tracking-wide'>
-                            {data.name || otherUser[0].name}
+                            {data.name || otherUser.user.name}
                         </p>
 
                         {lastMessage?.createdAt && (
@@ -66,8 +58,8 @@ const ConversationBox = ({ data, selected }: ConversationBoxProps) => {
                         )}
 
                     </div>
-                    <p className={cn('text-sm truncate',
-                        hasSeen ? 'text-gray-500' : 'font-medium text-neutral-300'
+                    <p className={cn('text-sm text-gray-500',
+                        selected && 'text-neutral-300'
                     )}>
                         {lastMessageText}
                     </p>
