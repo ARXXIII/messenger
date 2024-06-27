@@ -54,6 +54,12 @@ export interface AvatarProps {
 	user?: User;
 }
 
+export interface AvatarsGroupProps {
+	users?: {
+		user: User;
+	}[];
+}
+
 export interface UserListProps {
 	users: User[];
 }
@@ -71,10 +77,12 @@ export type FullConversationType = Conversation & {
 	users: {
 		user: User;
 	}[];
+	messages?: FullMessageType[];
 };
 
 export interface ConversationListProps {
 	initialsItems: FullConversationType[];
+	users: User[];
 }
 
 export interface ConversationBoxProps {
@@ -110,4 +118,45 @@ export interface BodyProps {
 export interface MessageBoxProps {
 	data: FullMessageType;
 	isLast?: boolean;
+}
+
+export interface ProfileDrawerProps {
+	data: Conversation & {
+		users: {
+			user: User;
+		}[];
+	};
+	isOpen: boolean;
+	onClose: () => void;
+}
+
+export interface ModalProps {
+	children: React.ReactNode;
+	isOpen?: boolean;
+	onClose: () => void;
+}
+
+export interface ConfirmModalProps {
+	isOpen?: boolean;
+	onClose: () => void;
+}
+
+export interface SettingsProps {
+	currentUser: User;
+	isOpen?: boolean;
+	onClose: () => void;
+}
+
+export interface GroupChatProps {
+	users: User[];
+	isOpen?: boolean;
+	onClose: () => void;
+}
+
+export interface SelectProps {
+	label: string;
+	value?: Record<string, any>;
+	onChange: (value: Record<string, any>) => void;
+	options: Record<string, any>[];
+	disabled?: boolean;
 }
