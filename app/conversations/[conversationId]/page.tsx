@@ -11,7 +11,7 @@ const ConversationId = async ({ params }: ConversationIdProps) => {
 
     if (!conversation) {
         return (
-            <div className="h-full">
+            <div className="w-full h-full">
                 <Empty />
             </div>
         )
